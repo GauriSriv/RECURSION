@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+int l_occ(int *a,int n,int i,int key)
+{
+    if(i==n)
+    {
+        return -1;
+    }
+    if(a[i]==key)
+    { //i could be answer
+    int bi=l_occ(a,n,i+1,key);
+    
+        if(bi!=-1)
+        {
+            return bi;
+        }
+        else
+        {
+            return i;
+        }
+    
+   }  
+   int j=l_occ(a,n,i+1,key);
+   return j;
+   }
+    
+
+int main()
+{
+    int a[]={1,4,3,5,1,2,6,1,7,8,9};
+    int n=sizeof(a)/sizeof(int);
+    int ans=l_occ(a,n,0,1);
+    cout<<ans;
+    return 0;
+}
