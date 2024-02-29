@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-void print(int n)
+void printdec(int n)
 {
    //1.BC 
 if(n==0)
@@ -10,8 +10,23 @@ if(n==0)
     //2.RF
     
     cout<<n<<" ";
-    print(n-1);
+    printdec(n-1);
     
+    
+    
+}
+void printinc(int n)
+{
+   //1.BC 
+if(n==0)
+{
+    return ;
+}
+    //2.RF
+    
+   
+    printinc(n-1);
+     cout<<n<<" ";
     
     
 }
@@ -19,7 +34,7 @@ int main()
 {
     int n;
     cin>>n;
-    print(n);
-
+    printdec(n);
+printinc(n);
     return 0;
 }
