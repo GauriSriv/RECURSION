@@ -1,0 +1,23 @@
+//they can either go single or in couple
+#include<iostream>
+using namespace std;
+
+int friends(int n)
+{
+    if(n==0 || n==1)  //base case
+    {
+        return 1;
+    }
+    
+    //recursive case
+    
+    return friends(n-1)+(n-1)*friends(n-2);
+}
+int main()
+{
+    int n=4;
+   
+   cout<<friends(n);
+ 
+    return 0;
+}
