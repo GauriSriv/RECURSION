@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+int Nstairs(int n,int k)
+{
+    if(n==0)
+    {
+        return 1;
+    }
+    
+    if(n<0)
+    {
+        return 0;
+    }
+    int ans=0;
+    for(int j=1;j<=k;j++)
+    {
+        ans+=Nstairs(n-j,k);
+    }
+    return ans;
+}
+int main()
+{
+    int n=10;
+    int answ=Nstairs(n,3);
+    cout<<answ<<endl;
+    return 0;
+}
