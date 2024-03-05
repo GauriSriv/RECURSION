@@ -1,0 +1,96 @@
+#include<iostream>
+using namespace std;
+bool isSafe(int board[][10],int i,int j,int n)
+{
+    //check for column
+    for(int row=0;row<i;row++)
+    {
+        if(board[row][j]==1)
+        {
+            return false;
+        }
+    }
+    
+    //check for left diagnol
+    int x=i;
+    int y=j;
+    while(x>=0 && y>=0)
+    {
+        if(board[x][y]==1)
+        {
+            return false;
+        }
+        x--;
+        y--;
+    }
+    
+    //check for right diagnol
+    x=i;
+    y=j;
+    while(x>=0 && y<=n)
+    {
+        if(board[x][y]==1)
+        {
+            return false;
+        }x--;
+        y++;
+    }
+    
+    //the position is now safe , col and diagnols
+    return true;
+}
+
+bool solveNQueen(int board[][10],int i,int j,int n)
+{    //base case
+if(i==n)
+//we may have succesfully place queens in a rows(0...n-1)
+//print the board
+for(int i=0;i<n;i++)
+{
+    for(int j=0;j<n;j++)
+    {
+        if(board[i][j]==1)
+        {
+            cout<<"Q";
+        }
+        else
+        {
+            cout<<"-";
+        }
+    }
+    cout<<endl;
+}
+return true;
+
+//recursive case
+//try to place the queen in the current row & call on the remaining part which will be solved by recursion
+ for(int j=0;j<n;j++)
+ {
+     //check whether the position is safe from above function
+     if(isSafe(board,i,j,n))
+     {
+         //place the queen  - assuming i,j is the right posn
+         board[i][j]=1;
+         
+         bool nextQueenRakhPaye=solveNQueen(board,i+1,j,n);
+         if(nextQueenRakhPaye)
+         {
+             return true;
+         }
+         //assuming i,j is  the right posn is wrong
+         board[i][j]=0;  //backtrack
+         
+     }
+     
+ } return false;
+}
+int main()
+{
+    
+    int n;
+    cin>>n;
+    int board[10][10]={0};
+    solveNQueen(board,0,0,n);
+    
+    return 0;
+}
